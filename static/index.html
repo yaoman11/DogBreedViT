@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Dog breed classification using YOLOv8 and Vision Transformer">
+    <meta name="theme-color" content="#667eea">
+    <title>Dog Breed Classification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐕 Dog Breed Classification</h1>
+            <p>Upload an image to detect and classify dog breeds</p>
+        </header>
+
+        <div class="info-box">
+            <div class="info-header">
+                <span class="info-icon">ℹ️</span>
+                <strong>Supported Dog Breeds</strong>
+            </div>
+            <p class="info-description">This model can identify 10 dog breeds:</p>
+            <div class="breeds-grid">
+                <div class="breed-item">• Bernese Mountain Dog</div>
+                <div class="breed-item">• Boxer</div>
+                <div class="breed-item">• Doberman</div>
+                <div class="breed-item">• German Shepherd</div>
+                <div class="breed-item">• Golden Retriever</div>
+                <div class="breed-item">• Great Dane</div>
+                <div class="breed-item">• Labrador Retriever</div>
+                <div class="breed-item">• Rottweiler</div>
+                <div class="breed-item">• Samoyed</div>
+                <div class="breed-item">• Siberian Husky</div>
+            </div>
+            <p class="info-note">Other breeds will be detected as "Unknown"</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-options">
+                <button class="option-btn active" id="uploadBtn">
+                    📁 Upload from Gallery
+                </button>
+                <button class="option-btn" id="cameraBtn">
+                    📷 Take Photo
+                </button>
+            </div>
+
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <p>Click to upload or drag and drop</p>
+                <p class="upload-hint">Supports: JPG, PNG, JPEG</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <input type="file" id="cameraInput" accept="image/*" capture hidden>
+            </div>
+
+            <!-- Camera modal for desktop -->
+            <div class="camera-modal" id="cameraModal" style="display: none;">
+                <div class="camera-container">
+                    <video id="cameraVideo" autoplay playsinline></video>
+                    <canvas id="cameraCanvas" style="display: none;"></canvas>
+                    <div class="camera-controls">
+                        <button id="captureBtn" class="btn-capture">📸 Capture</button>
+                        <button id="closeCameraBtn" class="btn-close">✕ Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="resetBtn" class="btn-secondary" style="display: none;">Reset</button>
+                <button id="analyzeBtn" class="btn-primary" disabled>Analyze Image</button>
+            </div>
+        </div>
+
+        <div class="preview-section" id="previewSection" style="display: none;">
+            <h3>Uploaded Image</h3>
+            <img id="previewImage" alt="Preview">
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing image...</p>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <h2>Results</h2>
+            <div class="result-image">
+                <img id="resultImage" alt="Result">
+            </div>
+            <div class="detections" id="detections"></div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <footer>
+            <p>For best results, ensure the dog is clearly visible in the image</p>
+            <p>Model: YOLOv8 + Vision Transformer (ViT)</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

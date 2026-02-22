@@ -1,0 +1,7 @@
+Best Accuracy: 98.02%
+lr: 4.458143620091819e-05
+weight_decay: 0.018512176610058655
+batch_size: 32
+label_smoothing: 0.11382827565426205
+freeze_ratio: 0.7314443047417426
+optimizer: AdamW

@@ -1,0 +1,38 @@
+Test Accuracy: 98.08%
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+Bernese_Mountain_Dog     1.0000    1.0000    1.0000        50
+               Boxer     1.0000    0.9800    0.9899        50
+            Doberman     0.9565    1.0000    0.9778        44
+     German_Shepherd     1.0000    0.9545    0.9767        44
+    Golden_Retriever     0.9838    0.9801    0.9819       804
+          Great_Dane     1.0000    1.0000    1.0000        56
+  Labrador_Retriever     0.9650    0.9758    0.9704       537
+          Rottweiler     1.0000    0.9783    0.9890        46
+             Samoyed     0.9939    0.9848    0.9893       330
+      Siberian_Husky     0.9716    0.9828    0.9771       174
+
+            accuracy                         0.9808      2135
+           macro avg     0.9871    0.9836    0.9852      2135
+        weighted avg     0.9809    0.9808    0.9808      2135
+
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+Bernese_Mountain_Dog     1.0000    1.0000    1.0000        49
+               Boxer     0.9412    0.9600    0.9505        50
+            Doberman     0.8980    1.0000    0.9462        44
+     German_Shepherd     0.9565    1.0000    0.9778        44
+    Golden_Retriever     0.9961    0.9614    0.9785       804
+          Great_Dane     0.9811    0.9286    0.9541        56
+  Labrador_Retriever     0.9382    0.9888    0.9628       537
+          Rottweiler     1.0000    0.9333    0.9655        45
+             Samoyed     0.9940    0.9970    0.9955       330
+      Siberian_Husky     0.9941    0.9713    0.9826       174
+
+            accuracy                         0.9756      2133
+           macro avg     0.9699    0.9740    0.9713      2133
+        weighted avg     0.9767    0.9756    0.9757      2133

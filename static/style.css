@@ -1,0 +1,808 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    word-wrap: break-word;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+header p {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* Info Box */
+.info-box {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+    border: 2px solid #d0e0ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #667eea;
+    font-size: 1.1em;
+}
+
+.info-icon {
+    font-size: 1.3em;
+}
+
+.info-description {
+    color: #555;
+    margin: 0 0 15px 0;
+    font-size: 0.95em;
+}
+
+.breeds-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.breed-item {
+    color: #444;
+    font-size: 0.9em;
+    padding: 4px 0;
+}
+
+.info-note {
+    color: #666;
+    font-size: 0.85em;
+    font-style: italic;
+    margin: 12px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid #d0e0ff;
+}
+
+.upload-section {
+    margin-bottom: 30px;
+}
+
+.upload-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.option-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 15px 20px;
+    background: #f8f9ff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.option-btn:hover {
+    border-color: #667eea;
+    background: #f0f2ff;
+    transform: translateY(-2px);
+}
+
+.option-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.option-btn:active {
+    transform: translateY(0);
+}
+
+.upload-area {
+    border: 3px dashed #667eea;
+    border-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9ff;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-area:hover {
+    border-color: #764ba2;
+    background: #f0f2ff;
+}
+
+.upload-area:active {
+    transform: scale(0.98);
+}
+
+.upload-area.dragover {
+    border-color: #764ba2;
+    background: #e8ebff;
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.upload-area p {
+    color: #333;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.upload-hint {
+    font-size: 0.9em !important;
+    color: #999 !important;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    flex: 2;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 15px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.btn-secondary:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(244, 67, 54, 0.4);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.preview-section {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.preview-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.preview-section img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.results-section {
+    margin-top: 40px;
+}
+
+.results-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.result-image {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-image img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
+
+.detections {
+    display: grid;
+    gap: 20px;
+}
+
+.detection-card {
+    background: #f8f9ff;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 5px solid #667eea;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.detection-card.unknown {
+    border-left-color: #999;
+}
+
+.detection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.detection-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    word-break: break-word;
+    flex: 1;
+    min-width: 0;
+}
+
+.unknown-note {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #856404;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.confidence-badge {
+    background: #667eea;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.confidence-badge.unknown {
+    background: #999;
+}
+
+.probabilities {
+    margin-top: 15px;
+}
+
+.probabilities h4 {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.prob-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+    gap: 10px;
+}
+
+.prob-item > span:first-child {
+    min-width: 120px;
+    word-break: break-word;
+}
+
+.prob-bar {
+    flex: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 60px;
+}
+
+.prob-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.5s ease;
+}
+
+.prob-value {
+    font-weight: bold;
+    color: #333;
+    min-width: 50px;
+    text-align: right;
+}
+
+.error-message {
+    background: #fee;
+    border: 2px solid #fcc;
+    color: #c33;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 0.95em;
+}
+
+/* Camera Modal */
+.camera-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.camera-container {
+    max-width: 800px;
+    width: 100%;
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.camera-container video {
+    width: 100%;
+    border-radius: 10px;
+    background: #000;
+    display: block;
+}
+
+.camera-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.btn-capture {
+    flex: 1;
+    max-width: 200px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-capture:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-close {
+    flex: 1;
+    max-width: 150px;
+    padding: 15px 25px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-close:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(244, 67, 54, 0.4);
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .upload-options {
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .option-btn {
+        min-width: 120px;
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+
+    .upload-area {
+        padding: 40px 15px;
+        min-height: 120px;
+    }
+
+    .upload-icon {
+        font-size: 3em;
+    }
+
+    .upload-area p {
+        font-size: 1em;
+    }
+
+    .btn-primary {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .btn-secondary {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .button-group {
+        gap: 8px;
+    }
+
+    .preview-section img,
+    .result-image img {
+        max-height: 300px;
+    }
+
+    .detection-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .detection-title {
+        font-size: 1.1em;
+    }
+
+    .confidence-badge {
+        align-self: flex-start;
+        font-size: 0.9em;
+    }
+
+    .prob-item {
+        gap: 5px;
+    }
+
+    .prob-item > span:first-child {
+        min-width: 100px;
+        font-size: 0.9em;
+    }
+
+    .prob-bar {
+        min-width: 50px;
+    }
+
+    .prob-value {
+        min-width: 45px;
+        font-size: 0.9em;
+    }
+
+    footer {
+        font-size: 0.8em;
+        padding-top: 15px;
+        margin-top: 30px;
+    }
+
+    .results-section h2 {
+        font-size: 1.5em;
+    }
+
+    .camera-modal {
+        padding: 10px;
+    }
+
+    .camera-container {
+        padding: 15px;
+    }
+
+    .btn-capture,
+    .btn-close {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header p {
+        font-size: 0.9em;
+    }
+
+    .info-box {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .info-header {
+        font-size: 1em;
+    }
+
+    .breeds-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .breed-item {
+        font-size: 0.85em;
+    }
+
+    .upload-options {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .option-btn {
+        min-width: 100%;
+        padding: 12px;
+        font-size: 0.9em;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        flex: 1;
+    }
+
+    .upload-area {
+        padding: 30px 10px;
+        min-height: 100px;
+    }
+
+    .upload-icon {
+        font-size: 2.5em;
+    }
+
+    .upload-area p {
+        font-size: 0.9em;
+    }
+
+    .detection-card {
+        padding: 15px;
+    }
+
+    .detection-title {
+        font-size: 1em;
+    }
+
+    .probabilities h4 {
+        font-size: 0.85em;
+    }
+
+    .prob-item span {
+        font-size: 0.85em;
+    }
+
+    .prob-item > span:first-child {
+        min-width: 80px;
+    }
+
+    .prob-bar {
+        height: 6px;
+        min-width: 40px;
+    }
+
+    .prob-value {
+        min-width: 40px;
+        font-size: 0.85em;
+    }
+
+    .results-section h2 {
+        font-size: 1.3em;
+    }
+
+    .camera-modal {
+        padding: 5px;
+    }
+
+    .camera-container {
+        padding: 10px;
+    }
+
+    .camera-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-capture,
+    .btn-close {
+        max-width: 100%;
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .preview-section img,
+    .result-image img {
+        max-height: 600px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .preview-section img,
+    .result-image img {
+        max-height: 250px;
+    }
+
+    .upload-area {
+        padding: 30px 15px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 30px;
+    }
+
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    .preview-section img,
+    .result-image img {
+        max-height: 500px;
+    }
+}
