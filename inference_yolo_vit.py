@@ -149,7 +149,7 @@ def inference_pipeline(image_path, yolo_model, vit_model, save_result=True,
             print(f"  -> {result['breed']} ({result['breed_confidence']:.1%})")
             valid_count += 1
         else:
-            print(f"  -> Unknown ({result['breed_confidence']:.1%})")
+            print(f"  -> Unknown")
     
     print(f"Valid: {valid_count}/{len(results)}")
     
@@ -176,7 +176,7 @@ def visualize_results(image, results, original_path):
             label = f"{breed}\n{conf:.1%}"
         else:
             color = (0.5, 0.5, 0.5, 1.0)
-            label = f"Unknown\n{conf:.1%}"
+            label = "Unknown"
         
         rect = patches.Rectangle((x1, y1), x2-x1, y2-y1, linewidth=2, 
                                   edgecolor=color, facecolor='none')
@@ -218,7 +218,7 @@ def main():
                 if r['is_valid']:
                     print(f"#{r['dog_id']}: {r['breed']} ({r['breed_confidence']:.1%})")
                 else:
-                    print(f"#{r['dog_id']}: Unknown ({r['breed_confidence']:.1%})")
+                    print(f"#{r['dog_id']}: Unknown")
     else:
         print(f"\nFile not found: {test_img}")
         print("Usage: results = inference_pipeline('image.jpg', yolo, vit)")

@@ -170,7 +170,7 @@ async def predict(file: UploadFile = File(...)):
                 label = f"{breed}\n{conf:.1f}%"
             else:
                 color = (0.5, 0.5, 0.5, 1.0)
-                label = f"Unknown\n{conf:.1f}%"
+                label = "Unknown"
             
             rect = patches.Rectangle((x1, y1), x2-x1, y2-y1, linewidth=3,
                                       edgecolor=color, facecolor='none')
