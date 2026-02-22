@@ -84,7 +84,7 @@ from inference_yolo_vit import (
 
 # Thresholds:
 # - YOLO_CONF_THRESHOLD (40%): Minimum confidence untuk object detection (< 40% = No dogs detected)
-# - BREED_CONF_THRESHOLD (60%): Minimum confidence untuk valid breed (< 60% = Unknown breed)
+# - BREED_CONF_THRESHOLD (80%): Minimum confidence untuk valid breed (< 80% = Unknown breed)
 
 app = FastAPI(title="Dog Breed Classification")
 

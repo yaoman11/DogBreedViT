@@ -129,8 +129,8 @@ DogBreedViT/
 ### Output
 - **Visualisasi** dengan bounding box
 - **Confidence score** setiap deteksi
-- **Prediksi ras tertinggi** untuk anjing yang teridentifikasi (>= 60% confidence)
-- **Warning Unknown** untuk anjing dengan ras tidak dikenali (< 60% confidence)
+- **Prediksi ras tertinggi** untuk anjing yang teridentifikasi (>= 80% confidence)
+- **Warning Unknown** untuk anjing dengan ras tidak dikenali (< 80% confidence)
 - **No dogs detected** untuk gambar tanpa anjing atau bukan anjing
 
 ### UI/UX
@@ -148,16 +148,16 @@ Sistem menggunakan 2-tier threshold:
 - **< 40% confidence**: "No dogs detected"
 - **>= 40% confidence**: Anjing terdeteksi, lanjut ke klasifikasi breed
 
-### 2. Breed Classification (60%)
-- **< 60% confidence**: "Unknown" breed (anjing terdeteksi tapi ras tidak dikenali)
+### 2. Breed Classification (80%)
+- **< 80% confidence**: "Unknown" breed (anjing terdeteksi tapi ras tidak dikenali)
   - Menampilkan "Unknown" dengan confidence score
   - Menampilkan warning: breed not in trained classes
-- **>= 60% confidence**: Breed identified
+- **>= 80% confidence**: Breed identified
   - Menampilkan nama ras dengan confidence score
 
 **Catatan:**
 - YOLO threshold 40% dipilih agar bisa mendeteksi anjing kecil (Chihuahua, dll)
-- Breed threshold 60% untuk memastikan prediksi yang akurat
+- Breed threshold 80% untuk memastikan prediksi yang sangat akurat dan mengurangi false positive
 - Jika gambar bukan anjing sama sekali, YOLO akan memberikan confidence < 40%
 
 ## Technology Stack

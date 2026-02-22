@@ -17,7 +17,7 @@ YOLO_MODEL = "yolov8n.pt"
 
 # Threshold detection
 YOLO_CONF_THRESHOLD = 0.4
-BREED_CONF_THRESHOLD = 0.6
+BREED_CONF_THRESHOLD = 0.8
 
 CLASS_NAMES = [
     "Bernese_Mountain_Dog", "Boxer", "Doberman", "German_Shepherd",
