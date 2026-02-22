@@ -289,14 +289,15 @@ function displayResults(data) {
         const unknownNote = !det.is_valid ? 
             '<p class="unknown-note">⚠️ Breed not recognized. This may be a dog breed not in our trained classes.</p>' : '';
         
+        const confidenceBadge = det.is_valid ? 
+            `<div class="confidence-badge">${det.confidence.toFixed(1)}%</div>` : '';
+        
         card.innerHTML = `
             <div class="detection-header">
                 <div class="detection-title">
                     Dog #${det.id}: ${det.breed}
                 </div>
-                <div class="confidence-badge ${!det.is_valid ? 'unknown' : ''}">
-                    ${det.confidence.toFixed(1)}%
-                </div>
+                ${confidenceBadge}
             </div>
             
             ${unknownNote}
