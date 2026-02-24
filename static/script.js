@@ -64,11 +64,16 @@ function isMobileDevice() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
+// Check if device is iOS
+function isIOSDevice() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
 // Click to upload or take photo
 uploadArea.addEventListener('click', () => {
     if (currentMode === 'camera') {
         if (isMobileDevice()) {
-            // On mobile, use native camera input
+            // On mobile (including iOS), use native camera input
             cameraInput.click();
         } else {
             // On desktop, use webcam with getUserMedia
@@ -79,17 +84,25 @@ uploadArea.addEventListener('click', () => {
     }
 });
 
-// Prevent default behavior for touch devices
+// Prevent default behavior for touch devices (but allow the click to trigger)
 uploadArea.addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    // Don't prevent default on iOS to allow input click
+    if (!isIOSDevice()) {
+        e.preventDefault();
+    }
     if (currentMode === 'camera') {
         if (isMobileDevice()) {
-            cameraInput.click();
+            // iOS needs setTimeout to work properly with hidden inputs
+            setTimeout(() => {
+                cameraInput.click();
+            }, 100);
         } else {
             openCamera();
         }
     } else {
-        fileInput.click();
+        setTimeout(() => {
+            fileInput.click();
+        }, 100);
     }
 });
 
